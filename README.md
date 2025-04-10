@@ -8,7 +8,7 @@ A modern Angular application that demonstrates the capabilities of the ElevenLab
 ![ElevenLabs TTS App - Desktop](src/assets/images/screenshot.png)
 
 ### Mobile View
-![ElevenLabs TTS App - Mobile](src/assets/images/screenshot-mobile.png)
+![ElevenLabs TTS App - Mobile](src/assets/images/iPhone%20SE-screenshot.png)
 
 ## Features
 
