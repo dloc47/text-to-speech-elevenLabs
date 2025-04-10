@@ -1,0 +1,57 @@
+<div class="tts-container">
+  <h2>Text to Speech with ElevenLabs</h2>
+  
+  <div class="input-section">
+    <textarea 
+      [(ngModel)]="textToSpeak" 
+      placeholder="Enter text to convert to speech..."
+      class="text-input"
+    ></textarea>
+  </div>
+
+  <div class="controls-section">
+    <div class="select-group">
+      <select [(ngModel)]="selectedVoice" class="select-input">
+        <option *ngFor="let voice of voices" [value]="voice.voice_id">
+          {{voice.name}}
+        </option>
+      </select>
+
+      <select [(ngModel)]="selectedModel" class="select-input">
+        <option *ngFor="let model of availableModels" [value]="model">
+          {{model}}
+        </option>
+      </select>
+    </div>
+
+    <div class="button-group">
+      <button 
+        (click)="speak()" 
+        [disabled]="!textToSpeak.trim() || isLoading"
+        class="primary-button"
+      >
+        {{ isLoading ? 'Converting...' : 'Convert to Speech' }}
+      </button>
+
+      <div class="playback-controls" *ngIf="hasAudio">
+        <button 
+          (click)="togglePlayPause()" 
+          class="control-button"
+          [class.active]="isPlaying"
+          [title]="isPlaying ? 'Pause' : 'Play'"
+        >
+          <i class="fas" [class.fa-pause]="isPlaying" [class.fa-play]="!isPlaying"></i>
+        </button>
+        
+        <button 
+          (click)="stopAudio()" 
+          class="control-button"
+          [class.active]="!isPlaying"
+          title="Stop and reset audio"
+        >
+          <i class="fas fa-stop"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
